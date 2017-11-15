@@ -1,0 +1,1 @@
+include  "exercicio2-ear", "exercicio2-war", "exercicio2-api", "exercicio2-impl", "exercicio2-ejb", "exercicio2-ejb-client"

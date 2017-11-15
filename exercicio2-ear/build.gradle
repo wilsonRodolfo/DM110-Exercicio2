@@ -1,0 +1,23 @@
+apply plugin: 'ear'
+
+dependencies {
+    deploy project(path: ':exercicio2-war', configuration: 'archives')
+    deploy project(path: ':exercicio2-ejb', configuration: 'archives')
+    earlib project(':exercicio2-api')
+    earlib project(':exercicio2-impl')
+    earlib project(':exercicio2-ejb-client')
+}
+
+ear {
+    deploymentDescriptor {
+        def warName = project(':exercicio2-war').name
+        def warVersion = project(':exercicio2-war').version
+        def warFileName = warName + '-' + warVersion + '.war'
+        webModule(warFileName, 'DM110')
+
+        def ejbName = project(':exercicio2-ejb').name
+        def ejbVersion = project(':exercicio2-ejb').version
+        def ejbFileName = ejbName + '-' + ejbVersion + '.jar'
+        module(ejbFileName, 'ejb')
+    }
+}
